@@ -1,0 +1,33 @@
+{
+  "name": "chapter-02-igniteourapp",
+  "version": "1.0.0",
+  "description": "Ignite our app",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\"https://github.com/githubtanush/namasteReact.git\""
+  },
+  "keywords": [
+    "React",
+    "Namaste",
+    "React",
+    "Tanush",
+    "Tanush",
+    "Arora"
+  ],
+  "author": "Tanush Arora",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.16.0"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "browserlist":[
+    "last 10 chrome versions",
+    "last 2 firefox versions"
+  ]
+}
