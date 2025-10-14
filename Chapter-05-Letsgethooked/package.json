@@ -1,0 +1,35 @@
+{
+  "name": "foodorderingapp",
+  "version": "1.0.0",
+  "description": "This app is used for ordering the food ",
+  "scripts": {
+    "test": "jest",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/githubtanush/Food_Ordering_App.git"
+  },
+  "keywords": [
+    "food",
+    "order",
+    "ordering",
+    "app",
+    "Foods",
+    "orders"
+  ],
+  "author": "Tanush Arora",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/githubtanush/Food_Ordering_App/issues"
+  },
+  "homepage": "https://github.com/githubtanush/Food_Ordering_App#readme",
+  "devDependencies": {
+    "parcel": "^2.16.0"
+  },
+  "dependencies": {
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}
