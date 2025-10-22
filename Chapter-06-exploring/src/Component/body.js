@@ -1,46 +1,85 @@
 import RestaurantCard from "./Restaurantcard";
-import resList from "../../utils/mockData";
-import { useState } from "react";
-//always remind that never ever keep that hard coded data in the component folder
+import { useEffect, useState } from "react";
+import Shimmer from "./shimmer";
 
 
 const Body = () => {
-    //Normal JS variable is resList variable
-    
-    //Now we use to make the superpower of react which variable is state variable
-    //useState is used for state variables
-    
-    //Local State variable - superPowerful variable
-    const [listOfRestaurants,setListOfRestaurants] = useState(resList);
-    
-    //Normal JS variable
-    // let listOfRestaurants = [];
+    //special state variable of react setvariable
+    //why do we even need state variable ? or can we use the local variable instead of this state variable?
+    //
+    const [listOfRestaurants,setListOfRestaurants] = useState([]);
+    //Whenever you changing the local variable the whole body component is re - render and refreshed
+    //at every word even a single typing of character re - render the react so you how fast react is re-render
 
-// a functional component js is at the end normal js function what is basically react element at the end?
-// React is a normal js object at the end similarly what is hook is ? 
-// A react hook is just a normal js function in the end which is given to us by react it is a prebuilt
-// The only thing is the function come with some superpowers that function has some logic written inside react
-// React hooks are normal js utility functions written by some awesome facebook developers
-// we can run all the utilities into our code
-//Two most important hooks is :- 
-// 1.) useState and 2.) useEffect
-//write now we are study useState hook 
-// useState basically gives you superpowerful react variables
+    const[filteredRestaurant,setFilteredRestaurant] = useState([]);
 
-    //   let filteredList = resList;
-    return (
+    const [searchText,setSearchText] = useState("");
+
+    console.log("component Rendered")
+
+    //State React variable - whenever state variable updates , react re - render or triggers a reconcilation cycle
+    // (re - renders the component)
+
+    //react will re - rendering the whole body component again and again but it will only update the input box value 
+    //inside the dom
+    
+    //useEffect will render the component till the body function will render 
+    //and as soon as the render cycle is finished it will just quickly call this callback function
+    //and then the useEffect call will printed into the console
+
+    //why we study useEffect when the page loads body component is rendered and now we will fetch the data 
+    //inside our useEffect 
+    useEffect(() => {
+        // console.log("useEffect callback function");
+        fetchData();
+    },[]);
+
+        // console.log("body rendered");
+    const fetchData = async () => {
+        const data = await fetch(
+    "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=21.99740&lng=79.00110&carousel=true&third_party_vendor=1"
+        );
+        const json = await data.json();
+
+        console.log(json);
+        setListOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setFilteredRestaurant(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    };
+
+    // if(listOfRestaurants.length === 0) return <h1>Loading....</h1>
+    //conditional rendering 
+    return (listOfRestaurants.length === 0) ? ( < Shimmer/> )
+    :(
         <div className="body">
             <div className="filter">
+                <div className="search">
+                    <input type="text" 
+                    className="search-box" 
+                    value={searchText} 
+                    onChange={(e) => {
+                        setSearchText(e.target.value);
+                    }}/>
+                    <button 
+                    onClick={() => {
+                        //Filter the restaurant card and update the UI
+                        //searchText 
+                        console.log(searchText);
+                        const filteredRestaurant = listOfRestaurants.filter(
+                            (res) => res.info.name.toLowerCase().includes(searchText.toLowerCase())
+                        );
+                        setFilteredRestaurant(filteredRestaurant);
+                    }}>search</button>
+                </div>
                 <button 
                 className="filter-btn" 
                 onClick ={() => {
                     // filteredList = resList.filter( 
-                    const filteredList = resList.filter(
-                        (res) => res.data.avgRating > 4
+                    const filteredList = listOfRestaurants.filter(
+                        (res) => res.info.avgRating > 4
                     );
-                    setListOfRestaurants(filteredList);
-                    console.log("button clicked");
-                    console.log(filteredList);
+                    setFilteredRestaurant(filteredList);
+                    // console.log("button clicked");
+                    // console.log(filteredList);
                     }
                 }
                 >Top Rated Restaurants</button>
@@ -63,8 +102,8 @@ const Body = () => {
                 React made this dom operations superfast and powerful
                 it keeps their data layer with the sync of ui layer
                 */}
-                {listOfRestaurants.map((restaurant) => (
-                    <RestaurantCard key={restaurant.data.id} resData={restaurant} />
+                {filteredRestaurant.map((restaurant) => (
+                    <RestaurantCard key={restaurant?.info?.id} resData={restaurant} />
                 ))
                 }
             </div>
