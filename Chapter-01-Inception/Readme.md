@@ -65,3 +65,8 @@ Execute your code only after the DOM has `initialized`, which makes DOM manipula
 Prevent top level variables from implicitly polluting the global namespace.
 Allow you to use top-level await in supported engines.
 Load and parse your code `asynchronously`, which improves load performance.
+
+
+
+
+# React is built with a philosphy manipulate a dom using javascript react is a superpowerful ways to do anything in website most important and costly operation in the web page is dom so we use react to do efficiently with javascript react at the end of the day is javascript 
