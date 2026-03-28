@@ -99,5 +99,44 @@
  package.json file contains the data on the other hand packagelock.json is the lock version of the file 
  its lock the exact version of the dependencies 
 
-
+ Now we no longer need the cdn links because we directly install the react and react-dom in our code
+ earlier React keyword coming from the cdn now it is directly installed in our node_modules
+ but browser scripts cannot have import/export because browser scripts treat as a normal js code 
+ but this import export is not a normal javascript it is a module
+ Now react is not coming from a cdn links now it is coming from a node_modules
+ 
+ React make our app fast but there are so many things which bundler are do 
+ parcel is giving energy to our apps / add bones to our app not react do all the things
+ parcel is like a package manager for our app 
+ like pm modi is react and then amit shah is parcel 
+ and then there are small minister like finance minister / education minister 
+ it is like that 
+ parcel is such a beast that manages all the things at all 
+ 
+ parcel creates 
+ - Dev build for you 
+ - Local server
+ - HMR = Hot Module Replacement
+ - File watcher algorithm - in c++ we write js parcel is keeping the track 
+ - caching things for you - Faster builds
+ - Image optimization
+ - Minification - for minification parcel use different libraries 
+ - Bundling the things
+ - Compress our file
+ - Treeshaking done by parcel - remove unused code for you
+ - Transpilation
+ - Zero configurations - parcel download all necessary plugins automatically
+ - Reliable Caching while development
+ - compatible with older version of browser
+ - consistent hashing 
+ - code splitting
+ - differential bundling - means when app hosted it can host in any browser parcer will 
+ take care for it means you have script type="module" this will automatically generates nomodule fallback
+ for older version as well,depending on browser targets
+ - diagnostics - beautiful diagnostics of error
+ - Error handling 
+ - https in dev
+ - Multi core
+ - -lazy module if we write lazy it will do lazy loading as well
+ - different dev and production bundles
  -->
