@@ -19,15 +19,15 @@
   ],
   "author": "Tanush Arora",
   "license": "ISC",
-  "devDependencies": {
-    "parcel": "^2.16.0"
-  },
   "dependencies": {
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
-  "browserlist":[
+  "browserlist": [
     "last 10 chrome versions",
     "last 2 firefox versions"
-  ]
+  ],
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  }
 }
